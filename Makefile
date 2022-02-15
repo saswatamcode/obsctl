@@ -57,12 +57,12 @@ deps: ## Ensures fresh go.mod and go.sum.
 .PHONY: docs
 docs: build $(MDOX) ## Generates config snippets and doc formatting.
 	@echo ">> generating docs $(PATH)"
-	PATH=${PATH}:$(GOBIN) $(MDOX) fmt -l --links.validate.config-file=$(MDOX_VALIDATE_CONFIG) *.md
+	$(MDOX) fmt -l --links.validate.config-file=$(MDOX_VALIDATE_CONFIG) *.md
 
 .PHONY: check-docs
 check-docs: build $(MDOX) ## Checks docs for discrepancies in formatting and links.
 	@echo ">> checking formatting and links $(PATH)"
-	PATH=${PATH}:$(GOBIN) $(MDOX) fmt --check -l --links.validate.config-file=$(MDOX_VALIDATE_CONFIG) *.md
+	$(MDOX) fmt --check -l --links.validate.config-file=$(MDOX_VALIDATE_CONFIG) *.md
 
 .PHONY: format
 format: ## Formats Go code.
